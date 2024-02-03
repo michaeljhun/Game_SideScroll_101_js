@@ -27,6 +27,7 @@ window.addEventListener("load",function(){
         drawStatusText(ctx, input, player);
         requestAnimationFrame(animate);
     };
+    
     animate();
 
 });
