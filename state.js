@@ -152,6 +152,10 @@ export class JumpingRight extends State {
     }
     handleInput(input){
         if (input === "PRESS left") this.player.setState(states.JUMPING_LEFT); 
+        else if (input === "PRESS down") {
+            //this.player.vy += 30*0.25;
+            this.player.setState(states.FALLING_RIGHT)
+        }
         else if (this.player.onGround()) this.player.setState(states.STANDING_RIGHT);
         else if (this.player.vy > 0) this.player.setState(states.FALLING_RIGHT);
     }

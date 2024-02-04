@@ -17,30 +17,31 @@ export default class Player{
         this.frameY = 0;
         this.maxFrame = 6;
         this.speed = 0;
-        this.maxSpeed = 12;
-        this.fps = 5;
-        this.frameTimer = 0;
+        this.maxSpeed = 10;
+        this.fps = 30;
+        this.frameInterval = 6;
+        
         this.frameInterval = 1000/this.fps;
+        this.frameTimer = 0;
     }
+    //no need delta time ??
     draw(context, deltaTime){
         console.log(`deltaTime ${deltaTime}`);
         console.log(`this.frameTimer ${this.frameTimer}`);
-        console.log(`this.frameInterval ${this.frameInterval}`);
-        console.log(`this.frameTimer > this.frameInterval ${this.frameTimer > this.frameInterval}`);
-        //this.frameTimer= 0;
-       // if (this.frameTimer > this.frameInterval){
+
+        if (this.frameTimer > this.frameInterval){
             if (this.frameX < this.maxFrame) {
                 this.frameX++;
             }else {
-                this.frameX = 0;
-                
+                this.frameX = 0;  
             }
-        //    this.frameTimer = 0;
-        //} else {
-        //    this.frameTimer += deltaTime;
-        //    this.frameTimer++;
-        //}
-        
+            this.frameTimer = 0;
+        } else {
+            console.log(`this.frameTimer IN1 ${this.frameTimer}`);
+            this.frameTimer += this.fps;
+            //this.frameTimer += deltaTime;
+            console.log(`this.frameTimer IN2 ${this.frameTimer}`);
+       }
         
         context.drawImage(this.image, (this.width * this.frameX), (this.height * this.frameY), this.width, this.height, this.x, this.y, this.width, this.height);  //build-in drawImage()
     }

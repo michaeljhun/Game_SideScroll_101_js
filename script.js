@@ -18,16 +18,17 @@ window.addEventListener("load",function(){
 
     let lastTime = 0;
     function animate(timeStamp){
-        const deltaTime = timeStamp - lastTime;
+        const deltaTimes = timeStamp - lastTime;
+        //console.log(`deltaTimesIN ${deltaTimes}`);
         lastTime = timeStamp;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         player.update(input.lastKey);
-        player.draw(ctx,deltaTime);
+        player.draw(ctx,deltaTimes);
         drawStatusText(ctx, input, player);
         requestAnimationFrame(animate);
     };
     
-    animate();
+    animate(0);
 
 });
